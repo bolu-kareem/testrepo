@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
-void main()=> runApp(const MaterialApp(
+void main()=> runApp(MaterialApp(
   home: karid(),
 ));
-class karid extends StatelessWidget {
-  const karid({super.key});
+class karid extends StatefulWidget {
+   karid({super.key});
 
+  @override
+  State<karid> createState() => _karidState();
+
+}
+
+class _karidState extends State<karid> {
+  int codingLevel= 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,9 +23,17 @@ class karid extends StatelessWidget {
        backgroundColor: Colors.grey[850],
        elevation: 0.0,
      ),
+        floatingActionButton: FloatingActionButton(onPressed: (){
+          setState(() {
+            codingLevel+=1;
+          });
+          },
+          backgroundColor: Colors.grey[800],
+         child: const Icon(Icons.add) ,
+        ),
         body: Padding(
         padding: const EdgeInsets.fromLTRB(30.0,40.0, 30.0, 0.0),
-        child: Column(
+         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget> [
             const Center(
@@ -57,9 +72,9 @@ class karid extends StatelessWidget {
               ),
             ),
             const SizedBox(height:10.0),
-            const Text(
-              '7',
-              style: TextStyle(
+             Text(
+              '$codingLevel',
+              style: const TextStyle(
                 color: Colors.pinkAccent,
                 letterSpacing: 2.0,
                 fontSize: 28.0,
@@ -90,5 +105,7 @@ class karid extends StatelessWidget {
     );
   }
 }
+
+
 
 
